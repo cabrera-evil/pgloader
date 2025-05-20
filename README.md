@@ -31,7 +31,7 @@ docker pull cabreraevil/pgloader
 ```bash
 docker run --rm \
   -v $(pwd)/db.sqlite3:/db.sqlite3:ro \
-  pgloader:pr-1531-arm64 \
+  cabreraevil/pgloader \
   --with "quote identifiers" --with "data only" \
   /db.sqlite3 postgresql://user:pass@host:5432/dbname
 ```
@@ -46,7 +46,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: pgloader:pr-1531-arm64
+    image: cabreraevil/pgloader:latest
     volumes:
       - ./db/db.sqlite3:/db.sqlite3:ro
     command: >
